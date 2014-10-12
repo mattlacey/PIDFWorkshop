@@ -1,0 +1,21 @@
+<apex:page standardController="PRXI__Beacon__c" extensions="ProximityAdExtension" showHeader="false" sidebar="false" standardStylesheets="false">
+
+    <style>
+        body
+        {
+            background-color: #000;
+            text-align: center;
+        }
+
+
+    </style>
+
+    <apex:form >
+        <apex:outputPanel id="adPanel">
+            <apex:image url="{!IF(adURL = '', PRXI__Beacon__c.Ad_URL__c, adURL)}"/>
+        </apex:outputPanel>
+
+        <apex:actionPoller action="{!CheckForCustomer}" interval="10" reRender="adPanel"/>
+    </apex:form>
+    
+</apex:page>
